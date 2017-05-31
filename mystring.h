@@ -10,7 +10,6 @@
 
 typedef struct {
     char cstring[STRING_SIZE];
-    uint32_t length;
 } String;
 
 uint32_t string_copy(String *to, String *from);
