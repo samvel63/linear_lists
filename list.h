@@ -3,8 +3,8 @@
 
 #include "mystring.h"
 
-#define DELETE_SUCCESS 0
-#define DELETE_ERROR -1
+#define LIST_SUCCESS 0
+#define LIST_ERROR -1
 
 typedef struct _list *List;
 
@@ -17,6 +17,8 @@ struct _list {
 void list_create(List list, int len);
 void add_elem(List list, String *str);
 int delete_elem(List list, String *str);
+int swap_elems(List list, int k);
+void print_list(List list);
 void list_destroy(List *list);
 
 #endif // _LIST_H_
