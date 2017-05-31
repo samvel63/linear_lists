@@ -17,7 +17,7 @@ int main(void)
 	list_create(list, n);
 
 	while (1) {
-		scanf("%s", s);
+		scanf("%6s", s);
 		if (!strcmp(s, "print") || !strcmp(s, "p")) {
 			if (list->cur_len == 0) {
 				printf("\nСписок пуст.\n\n");
@@ -30,8 +30,14 @@ int main(void)
 			printf("\nРазмер списка: %d", list->len);
 			printf("\nКоличество элементов в списке: %d", list->cur_len);
 		} else if (!strcmp(s, "add")) {
-				scanf("%63s", elem.cstring);
-				add_elem(list, &elem);
+			scanf("%63s", elem.cstring);
+			add_elem(list, &elem);
+		} else if (!strcmp(s, "delete") || !strcmp(s, "del")) {
+			scanf("%63s", elem.cstring);
+			if (!delete_elem(list, &elem))
+				printf("\nЭлемент удален\n\n");
+			else
+				printf("\nНе удалось удалить элемент\n\n");
 		} else if (!strcmp(s, "quit") || !strcmp(s, "q")) {
 			break;
 		}
