@@ -10,7 +10,7 @@ int main(void)
 	List list = (List)malloc(sizeof(*list));
 
 	char s[7];
-	int n = 0;
+	int n = 0, k = 0;
 	String elem;
 	printf("\n\nВведите размер списка:\n\n");
 	scanf("%d", &n);
@@ -18,25 +18,30 @@ int main(void)
 
 	while (scanf("%6s", s) == 1) {
 		if (!strcmp(s, "print") || !strcmp(s, "p")) {
-			if (list->cur_len == 0)
-				printf("\nСписок пуст.\n\n");
-			else
-				print_list(list);
+			print_list(list);
 		} else if (!strcmp(s, "len")) {
+
 			printf("\nРазмер списка: %d", list->len);
-			printf("\nКоличество элементов в списке: %d", list->cur_len);
+			printf("\nКоличество элементов в списке: %d\n\n", list->cur_len);
+
 		} else if (!strcmp(s, "add")) {
+			scanf("%d", &k);
 			scanf("%63s", elem.cstring);
-			add_elem(list, &elem);
+
+			if (add_elem(list, k, &elem))
+				printf("\nНеудалось добавить\n\n");
+			else
+				printf("\nЭлемент добавлен\n\n");
 		} else if (!strcmp(s, "delete") || !strcmp(s, "del")) {
-			scanf("%63s", elem.cstring);
-			if (!delete_elem(list, &elem))
+			scanf("%d", &k);
+
+			if (!delete_elem(list, k))
 				printf("\nЭлемент удален\n\n");
 			else
 				printf("\nНе удалось удалить элемент\n\n");
 		} else if (!strcmp(s, "swap")) {
-			int k = 0;
 			scanf("%d", &k);
+
 			if (!swap_elems(list, k))
 				printf("\nЭлементы изменены\n\n");
 			else

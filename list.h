@@ -15,10 +15,12 @@ struct _list {
 };
 
 void list_create(List list, int len);
-void add_elem(List list, String *str);
-int delete_elem(List list, String *str);
+int add_elem(List list, int k, String *str);
+int delete_elem(List list, int k);
 int swap_elems(List list, int k);
 void print_list(List list);
 void list_destroy(List *list);
+int list_is_empty(List list);
+int list_is_full(List list);
 
 #endif // _LIST_H_
